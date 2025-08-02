@@ -1,0 +1,137 @@
+import React, { useState, useEffect } from 'react';
+import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
+import './Homepage.css';
+import CompanyLogos from './Component/CompanyLogos';
+import Footer from './Component/Footer';
+import BusinessServices from './Component/BusinessServices';
+import ExpertiseSections from './Component/ExpertiseSections';
+import TechHiringComponent from './Component/TechHiring';
+
+const Homepage = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { name: 'What We Do', hasDropdown: true },
+    { name: 'Who We Serve', hasDropdown: true },
+    { name: 'How We Engage', hasDropdown: true },
+    { name: 'Hire Dev', hasDropdown: true },
+    { name: 'Company', hasDropdown: true },
+    { name: 'Careers', hasDropdown: false },
+  ];
+
+  return (
+    <div className="homepage">
+      {/* Header */}
+      <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
+        <div className="header-container">
+          <div className="logo">
+            <div className="logo-icon">
+              <span>IZ</span>
+            </div>
+            <span className="logo-text">invozone</span>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="desktop-nav">
+            {navItems.map((item, index) => (
+              <div key={index} className="nav-item">
+                <button className="nav-link">
+                  {item.name}
+                  {item.hasDropdown && <ChevronDown size={16} />}
+                </button>
+              </div>
+            ))}
+          </nav>
+
+          {/* CTA Buttons */}
+          <div className="header-cta">
+            <button className="contact-btn">Contact Us</button>
+            <button className="cta-btn">
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="mobile-menu-btn"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
+          {navItems.map((item, index) => (
+            <button key={index} className="mobile-nav-link">
+              {item.name}
+            </button>
+          ))}
+          <button className="mobile-contact-btn">Contact Us</button>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="hero">
+        {/* Background Image with Overlay */}
+        <div className="hero-background">
+          <div className="hero-overlay"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span>Software Development Consulting</span>
+          </div>
+          
+          <div className="hero-text">
+            <h1 className="hero-title">
+              <span className="title-line">Future-Driven</span>
+              <span className="title-line">Innovations.</span>
+            </h1>
+            
+            <p className="hero-subtitle">
+              Fostering Growth For Startups, Enterprises, And Innovators.
+            </p>
+            
+            <div className="hero-buttons">
+              <button className="btn-primary">
+                Get Started
+                <ArrowRight size={18} />
+              </button>
+              <button className="btn-secondary">
+                Learn More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="scroll-indicator">
+          <div className="scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </section>
+
+      <CompanyLogos/>
+      
+      <BusinessServices/>
+      <ExpertiseSections/>
+      <TechHiringComponent/>
+      <Footer/>
+    
+    </div>
+  );
+};
+
+export default Homepage;

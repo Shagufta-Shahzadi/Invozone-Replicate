@@ -1,0 +1,253 @@
+/* CompanyLogos.css */
+.company-logos-container {
+  width: 100%;
+  max-width: 1152px; /* max-w-6xl */
+  margin: 0 auto;
+  padding: 3rem 1.5rem; /* py-12 px-6 */
+  background-color: white;
+   margin-top: 100px;
+}
+
+.stats-header {
+  text-align: center;
+  margin-bottom: 3rem; /* mb-12 */
+}
+
+.stats-title {
+  font-size: 1.2rem; /* text-3xl */
+  font-weight: 600; /* font-light */
+  color: #374151; /* text-gray-700 */
+  line-height: 1.625; /* leading-relaxed */
+}
+
+@media (max-width: 768px) {
+  .stats-title {
+    font-size: 1.5rem; /* text-2xl on mobile */
+  }
+}
+
+.stats-number {
+  color: #3b82f6; /* text-blue-500 */
+  font-weight: 600; /* font-semibold */
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* grid-cols-5 */
+  gap: 1rem; /* gap-4 */
+  align-items: center;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .logos-grid {
+    gap: 2rem; /* md:gap-8 */
+  }
+} 
+.logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.logo-item:hover {
+  transform: scale(1.05) translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.logo-container {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 480px) {
+  .logo-container {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-container {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-container {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.logo-image {
+  max-width: 200%;
+  max-height: 280%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+/* Special styling for imported Column logo */
+.column-logo {
+  max-width: 260px ;
+  max-height: 300px ;
+  margin-left: 20px;
+}
+
+.logo-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #e5e7eb;
+  border-radius: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  color: #4b5563;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .logo-fallback {
+    font-size: 1.25rem;
+  }
+}
+
+.info-section {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out 0.4s;
+}
+
+@media (min-width: 768px) {
+  .info-section {
+    margin-top: 4rem;
+    padding: 2rem;
+  }
+}
+
+.info-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .info-title {
+    font-size: 1.125rem;
+  }
+}
+
+.info-content {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+@media (min-width: 768px) {
+  .info-content {
+    font-size: 0.875rem;
+  }
+}
+
+.info-content p {
+  margin-bottom: 0.5rem;
+}
+
+.info-content ul {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0;
+}
+
+.info-content li {
+  margin-bottom: 0.25rem;
+  list-style: none;
+}
+
+.info-content code {
+  display: block;
+  background-color: #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.7rem;
+  font-family: monospace;
+  margin: 0.5rem 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+@media (min-width: 768px) {
+  .info-content code {
+    font-size: 0.75rem;
+    word-break: normal;
+  }
+}
+
+.info-content strong {
+  font-weight: 600;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 320px) {
+  .stats-title {
+    font-size: 1.1rem;
+  }
+  
+  .logo-container {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .info-content {
+    font-size: 0.75rem;
+  }
+}
