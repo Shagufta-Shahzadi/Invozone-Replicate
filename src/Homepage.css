@@ -553,6 +553,7 @@ body {
   
   .mobile-menu-content {
     padding-top: 80px;
+    margin-right: 20px;
   }
   
   .hero-content {
@@ -584,8 +585,8 @@ body {
   
   .btn-primary,
   .btn-secondary {
-    width: 100%;
-    max-width: 280px;
+    width: 80%;
+    max-width: 200px;
     padding: 0.85rem 2rem;
     font-size: 14px;
   }
