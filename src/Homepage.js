@@ -27,7 +27,7 @@ const Homepage = () => {
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMenuOpen && !event.target.closest('.header')) {
+      if (isMenuOpen && !event.target.closest('.header') && !event.target.closest('.mobile-menu')) {
         setIsMenuOpen(false);
       }
     };
@@ -65,6 +65,11 @@ const Homepage = () => {
   const toggleMobileMenu = (e) => {
     e.stopPropagation();
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMobileMenu = (e) => {
+    e.stopPropagation();
+    setIsMenuOpen(false);
   };
 
   return (
@@ -107,23 +112,39 @@ const Homepage = () => {
         {isMenuOpen && (
           <div 
             className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMobileMenu}
           />
         )}
         <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
+          {/* Mobile Menu Header with Logo and Close Button */}
+          <div className="mobile-menu-header">
+            <div className="mobile-menu-logo">
+              <img src={logo} alt="Invozone" className="logo-image" />
+            </div>
+            <button 
+              className="mobile-menu-close"
+              onClick={closeMobileMenu}
+              aria-label="Close mobile menu"
+            >
+              <X size={20} />
+            </button>
+          </div>
+          
+          {/* Mobile Menu Content */}
           <div className="mobile-menu-content">
             <nav className="mobile-nav">
               {navItems.map((item, index) => (
                 <button 
-                  key={index} 
+                  key={index}
                   className="mobile-nav-link"
                   onClick={handleMobileNavClick}
                 >
                   {item.name}
-                  {item.hasDropdown && <ChevronDown size={16} />}
+                  {item.hasDropdown && <ChevronDown size={18} />}
                 </button>
               ))}
             </nav>
+            
             <div className="mobile-menu-cta">
               <button 
                 className="mobile-contact-btn"

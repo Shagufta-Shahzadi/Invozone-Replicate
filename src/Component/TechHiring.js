@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Search } from 'lucide-react'; // Professional search icon
 import { technologiesData } from '../Data/technologiesData';
 import './TechHiring.css';
 
@@ -25,17 +26,17 @@ const TechHiringComponent = () => {
       }
     );
 
-    const currentComponent = componentRef.current; // Capture the ref value
+    const currentComponent = componentRef.current;
 
     if (currentComponent) {
       observer.observe(currentComponent);
     }
 
     return () => {
-      if (currentComponent) { // Use the captured value
+      if (currentComponent) {
         observer.unobserve(currentComponent);
       }
-      observer.disconnect(); // Clean up the observer entirely
+      observer.disconnect();
     };
   }, []);
 
@@ -79,7 +80,7 @@ const TechHiringComponent = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="search-input"
             />
-            <div className="search-icon">🔍</div>
+            <Search className="search-icon" size={16} />
           </div>
         </div>
       </div>

@@ -183,7 +183,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: 200px;
+  width: 280px;
   height: 100vh;
   background: #ffffff;
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
@@ -192,7 +192,7 @@ body {
   visibility: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
   z-index: 1001;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .mobile-menu-open {
@@ -201,16 +201,61 @@ body {
   visibility: visible;
 }
 
+/* Mobile Menu Header with Logo and Close Button */
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.2rem;
+  height: 65px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.mobile-menu-logo {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu-logo .logo-image {
+  height: 45px;
+  width: auto;
+}
+
+.mobile-menu-close {
+  background: #ef4444;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+
+.mobile-menu-close:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
 .mobile-menu-content {
-  padding: 2rem 1.5rem;
-  height: 100%;
+  padding: 0 1.2rem;
+  height: calc(100vh - 65px);
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
+  overflow-y: auto;
 }
 
 .mobile-nav {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
 }
 
 .mobile-nav-link {
@@ -224,9 +269,9 @@ body {
   color: #1f2937;
   font-family: inherit;
   cursor: pointer;
-  padding: 1.25rem 0;
+  padding: 1rem 0;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
@@ -235,11 +280,13 @@ body {
   color: #3b82f6;
   background: rgba(59, 130, 246, 0.05);
   padding-left: 0.5rem;
+  border-radius: 8px;
+  margin: 0 -0.5rem;
 }
 
 .mobile-menu-cta {
-  margin-top: 2rem;
-  padding-top: 2rem;
+  margin-top: auto;
+  padding: 1.5rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -248,10 +295,10 @@ body {
   background: #3b82f6;
   color: white;
   border: none;
-  padding: 1rem;
-  border-radius: 12px;
+  padding: 0.8rem;
+  border-radius: 10px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
@@ -543,65 +590,120 @@ body {
 
 @media (max-width: 768px) {
   .header-container {
-    height: 60px;
+    height: 40px;
     padding: 0 1rem;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     right: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .header-scrolled .header-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
   
   .logo-image {
-    height: 600px;
+    height: 35px;
   }
   
   .mobile-menu {
     width: 280px;
-    height: 600px;
+    height: 100vh;
+  }
+  
+  .mobile-menu-header {
+    height: 65px;
+    padding: 0.8rem 1.2rem;
+  }
+  
+  .mobile-menu-logo .logo-image {
+    height: 45px;
+  }
+  
+  .mobile-menu-close {
+    background: #ef4444;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
   }
   
   .mobile-menu-content {
-    padding-top: 80px;
+    padding-top: 0;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    padding-bottom: 1.2rem;
+    height: calc(100vh - 65px);
+  }
+  
+  .mobile-nav-link {
+    font-size: 15px;
+    padding: 1rem 0;
+  }
+  
+  .mobile-contact-btn {
+    font-size: 15px;
+    padding: 0.8rem;
+  }
+  
+  .hero {
+    height: 100vh;
+    min-height: 600px;
   }
   
   .hero-content {
     padding: 0 1rem;
-    margin-top: 60px;
+    margin-top: 40px;
   }
   
   .hero-title {
-    font-size: clamp(1.75rem, 7vw, 3rem);
-    margin-bottom: 1rem;
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    margin-bottom: 1.2rem;
   }
   
   .hero-subtitle {
-    font-size: clamp(0.9rem, 3.5vw, 1.125rem);
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+    margin-bottom: 2.2rem;
   }
   
   .hero-badge {
-    font-size: 10px;
-    padding: 0.3rem 0.8rem;
-    margin-bottom: 1.25rem;
+    font-size: 13px;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1.5rem;
   }
   
   .hero-buttons {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     align-items: flex-start;
   }
   
   .btn-primary,
   .btn-secondary {
-    width: 100%;
-    max-width: 280px;
-    padding: 0.85rem 2rem;
+    width: auto;
+    min-width: 110px;
+    max-width: 160px;
+    padding: 0.8rem 1.5rem;
     font-size: 14px;
   }
   
   .scroll-indicator {
-    display: none;
+    display: block;
   }
   
   .header-cta {
@@ -609,104 +711,189 @@ body {
   }
   
   .contact-btn {
-    padding: 0.5rem 1.25rem;
-    font-size: 12px;
+    padding: 0.6rem 1.2rem;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
   .header-container {
-    height: 55px;
+    height: 40px;
     padding: 0 0.75rem;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     right: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .header-scrolled .header-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
   
   .logo-image {
-    height: 40px;
+    height: 30px;
   }
   
   .mobile-menu {
-    width: 200px;
+    width: 260px;
+  }
+  
+  .mobile-menu-header {
+    height: 65px;
+    padding: 0.8rem 1rem;
+  }
+  
+  .mobile-menu-logo .logo-image {
+    height: 40px;
+  }
+  
+  .mobile-menu-close {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
   }
   
   .mobile-menu-content {
-    padding: 1.5rem;
-    padding-top: 75px;
+    height: calc(100vh - 65px);
+    padding: 0 1rem;
+  }
+  
+  .mobile-nav-link {
+    font-size: 14px;
+    padding: 0.9rem 0;
+  }
+  
+  .mobile-contact-btn {
+    font-size: 14px;
+    padding: 0.7rem;
+  }
+  
+  .hero {
+    height: 95vh;
+    min-height: 550px;
   }
   
   .hero-content {
     padding: 0 0.75rem;
-    margin-top: 55px;
+    margin-top: 40px;
   }
   
   .hero-title {
-    font-size: clamp(1.5rem, 8vw, 2.5rem);
+    font-size: clamp(2rem, 7vw, 2.8rem);
     line-height: 1.2;
   }
   
   .hero-subtitle {
-    font-size: clamp(0.8rem, 3.5vw, 1rem);
-    margin-bottom: 1.75rem;
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    margin-bottom: 2rem;
   }
   
   .hero-badge {
-    font-size: 9px;
-    padding: 0.25rem 0.7rem;
+    font-size: 12px;
+    padding: 0.35rem 0.8rem;
   }
   
   .btn-primary,
   .btn-secondary {
-    padding: 0.8rem 1.5rem;
+    padding: 0.75rem 1.3rem;
     font-size: 13px;
-    min-width: auto;
+    min-width: 100px;
+    max-width: 140px;
   }
   
   .contact-btn {
-    padding: 0.4rem 1rem;
-    font-size: 11px;
-  }
-  
-  .mobile-nav-link {
-    padding: 1rem 0;
-    font-size: 15px;
-  }
-  
-  .mobile-contact-btn {
-    padding: 0.85rem;
-    font-size: 15px;
-    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 360px) {
   .header-container {
     padding: 0 0.5rem;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .header-scrolled .header-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo-image {
+    height: 28px;
+  }
+  
+  .mobile-menu {
+    width: 240px;
+  }
+  
+  .mobile-menu-header {
+    height: 60px;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .mobile-menu-logo .logo-image {
+    height: 35px;
+  }
+  
+  .mobile-menu-close {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+  }
+  
+  .mobile-menu-content {
+    height: calc(100vh - 60px);
+    padding: 0 0.8rem;
+  }
+  
+  .mobile-nav-link {
+    font-size: 13px;
+    padding: 0.8rem 0;
+  }
+  
+  .mobile-contact-btn {
+    font-size: 13px;
+    padding: 0.6rem;
+  }
+  
+  .hero {
+    height: 90vh;
+    min-height: 500px;
   }
   
   .hero-content {
     padding: 0 0.5rem;
-  }
-  
-  .logo-text {
-    font-size: 16px;
+    margin-top: 40px;
   }
   
   .hero-title {
-    font-size: clamp(1.5rem, 10vw, 2.5rem);
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
   }
   
   .hero-buttons {
-    gap: 0.75rem;
+    gap: 0.8rem;
   }
   
   .btn-primary,
   .btn-secondary {
-    padding: 0.75rem 1.25rem;
+    padding: 0.7rem 1.1rem;
     font-size: 12px;
+    min-width: 90px;
+    max-width: 130px;
   }
 }
 
@@ -714,7 +901,7 @@ body {
 @media (max-height: 500px) and (orientation: landscape) {
   .hero {
     height: 100vh;
-    min-height: 500px;
+    min-height: 400px;
   }
   
   .hero-content {
@@ -722,29 +909,30 @@ body {
   }
   
   .hero-title {
-    font-size: clamp(1.5rem, 4vh, 2.5rem);
+    font-size: clamp(1.4rem, 4vh, 2.2rem);
     margin-bottom: 0.75rem;
   }
   
   .hero-subtitle {
-    font-size: clamp(0.875rem, 3vh, 1.125rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(0.8rem, 3vh, 1rem);
+    margin-bottom: 1.2rem;
   }
   
   .hero-badge {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
   
   .hero-buttons {
     flex-direction: row;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
   
   .btn-primary,
   .btn-secondary {
     width: auto;
-    min-width: 120px;
-    padding: 0.5rem 1.5rem;
+    min-width: 100px;
+    max-width: 140px;
+    padding: 0.5rem 1.2rem;
   }
 }
 
@@ -775,7 +963,8 @@ body {
 .mobile-nav-link:focus,
 .mobile-contact-btn:focus,
 .btn-primary:focus,
-.btn-secondary:focus {
+.btn-secondary:focus,
+.mobile-menu-close:focus {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
@@ -784,18 +973,78 @@ body {
 @media (max-width: 320px) {
   .header-container {
     padding: 0 0.25rem;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .header-scrolled .header-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo-image {
+    height: 25px;
+  }
+  
+  .mobile-menu {
+    width: 220px;
+  }
+  
+  .mobile-menu-header {
+    height: 55px;
+    padding: 0.5rem 0.6rem;
+  }
+  
+  .mobile-menu-logo .logo-image {
+    height: 30px;
+  }
+  
+  .mobile-menu-close {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+  }
+  
+  .mobile-menu-content {
+    height: calc(100vh - 55px);
+    padding: 0 0.6rem;
+  }
+  
+  .mobile-nav-link {
+    font-size: 12px;
+    padding: 0.7rem 0;
+  }
+  
+  .mobile-contact-btn {
+    font-size: 12px;
+    padding: 0.5rem;
+  }
+  
+  .hero {
+    height: 85vh;
+    min-height: 450px;
   }
   
   .hero-content {
     padding: 0 0.25rem;
-  }
-  
-  .logo-text {
-    font-size: 14px;
+    margin-top: 40px;
   }
   
   .contact-btn {
-    padding: 0.35rem 0.75rem;
-    font-size: 10px;
+    padding: 0.4rem 0.8rem;
+    font-size: 11px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.6rem 1rem;
+    font-size: 11px;
+    min-width: 85px;
+    max-width: 120px;
   }
 }
