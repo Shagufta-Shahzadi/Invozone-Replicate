@@ -332,7 +332,7 @@ body {
 /* Hero Section */
 .hero {
   position: relative;
-  height: 600px;
+  height: 700px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -659,8 +659,7 @@ body {
   }
   
   .hero {
-    height: 100vh;
-    min-height: 600px;
+    height: 700px;
   }
   
   .hero-content {
