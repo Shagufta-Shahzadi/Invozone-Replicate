@@ -553,11 +553,11 @@ body {
   }
   
   .logo-image {
-    height: 35px;
+    height: 90px;
   }
   
   .mobile-menu {
-    width: 280px;
+    width: 200px;
   }
   
   .mobile-menu-content {
@@ -594,8 +594,8 @@ body {
   .btn-primary,
   .btn-secondary {
     width: 100%;
-    max-width: 280px;
-    padding: 0.85rem 2rem;
+    max-width: 200px;
+    padding: 0.85rem 1rem;
     font-size: 14px;
   }
   
