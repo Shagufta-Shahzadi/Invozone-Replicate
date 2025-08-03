@@ -126,18 +126,9 @@ const BusinessServices = () => {
     }, 600);
   };
 
-  const goToTestimonial = (index) => {
-    if (isTransitioning || index === currentTestimonial) return;
-    
-    setIsTransitioning(true);
-    setCurrentTestimonial(index);
-    
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 600);
-  };
+  
 
-  // Enhanced Intersection Observer for multiple elements
+  // Enhanced Intersection Observer for scroll animations
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -150,12 +141,12 @@ const BusinessServices = () => {
           if (entry.target === componentRef.current) {
             setIsVisible(true);
           } else if (entry.target === partnerSectionRef.current) {
-            entry.target.classList.add('animate-in');
+            entry.target.classList.add('BusinessServices-animate-in');
           } else {
             // Add animation classes based on data attributes
             const animationType = entry.target.getAttribute('data-animation');
             if (animationType) {
-              entry.target.classList.add('visible');
+              entry.target.classList.add('BusinessServices-visible');
             }
           }
         }
@@ -194,103 +185,103 @@ const BusinessServices = () => {
   };
 
   return (
-    <div ref={componentRef} className={`business-services ${isVisible ? 'animate-in' : ''}`}>
+    <div ref={componentRef} className={`BusinessServices-container ${isVisible ? 'BusinessServices-animate-in' : ''}`}>
       {/* Header Section */}
-      <div className="header-section" data-animation="fade-in-on-scroll">
-        <h1 className="main-title">
-          Backing Your Up At <span className="highlight">Every Stage Of Your Progress</span>
+      <div className="BusinessServices-header-section" data-animation="BusinessServices-fade-in-on-scroll">
+        <h1 className="BusinessServices-main-title">
+          Backing Your Up At <span className="BusinessServices-highlight">Every Stage Of Your Progress</span>
         </h1>
-        <p className="subtitle">
+        <p className="BusinessServices-subtitle">
           From launching startups to expanding enterprises, or recovering from setbacks, we help 
           businesses overcome every challenge on their journey.
         </p>
       </div>
 
       {/* Service Cards */}
-      <div className="services-grid">
-        <div className="service-card startup-card" data-animation="slide-in-left">
-          <div className="card-content">
-            <h2 className="card-title">
+      <div className="BusinessServices-services-grid">
+        <div className="BusinessServices-service-card BusinessServices-startup-card" data-animation="BusinessServices-slide-in-left">
+          <div className="BusinessServices-card-content">
+            <h2 className="BusinessServices-card-title">
               I'm A<br />
-              <span className="card-highlight">Startup.</span>
+              <span className="BusinessServices-card-highlight">Startup.</span>
             </h2>
-            <p className="card-description">
+            <p className="BusinessServices-card-description">
               Remarkable ideas often stall without the right team to bring them to life
             </p>
-            <button className="card-button">
+            <button className="BusinessServices-card-button">
               Get Started
-              <span className="button-arrow">→</span>
+              <span className="BusinessServices-button-arrow">→</span>
             </button>
           </div>
-          <div className="card-bg-shape"></div>
+          <div className="BusinessServices-card-bg-shape"></div>
         </div>
 
-        <div className="service-card enterprise-card" data-animation="fade-in-on-scroll">
-          <div className="card-content">
-            <h2 className="card-title">
+        <div className="BusinessServices-service-card BusinessServices-enterprise-card" data-animation="BusinessServices-fade-in-on-scroll">
+          <div className="BusinessServices-card-content">
+            <h2 className="BusinessServices-card-title">
               I'm An<br />
-              <span className="card-highlight">Enterprise.</span>
+              <span className="BusinessServices-card-highlight">Enterprise.</span>
             </h2>
-            <p className="card-description">
+            <p className="BusinessServices-card-description">
               Scaling without the right infrastructure and expertise can lead to costly bottlenecks.
             </p>
-            <button className="card-button dark">
+            <button className="BusinessServices-card-button BusinessServices-dark">
               Explore More
-              <span className="button-arrow">→</span>
+              <span className="BusinessServices-button-arrow">→</span>
             </button>
           </div>
-          <div className="card-bg-shape enterprise-shape"></div>
+          <div className="BusinessServices-card-bg-shape BusinessServices-enterprise-shape"></div>
         </div>
 
-        <div className="service-card rescue-card" data-animation="slide-in-right">
-          <div className="card-content">
-            <h2 className="card-title">
+        <div className="BusinessServices-service-card BusinessServices-rescue-card" data-animation="BusinessServices-slide-in-right">
+          <div className="BusinessServices-card-content">
+            <h2 className="BusinessServices-card-title">
               I Need A<br />
-              <span className="card-highlight">Rescue.</span>
+              <span className="BusinessServices-card-highlight">Rescue.</span>
             </h2>
-            <p className="card-description">
+            <p className="BusinessServices-card-description">
               A messy codebase and tech debt are suffocating your progress.
             </p>
-            <button className="card-button">
+            <button className="BusinessServices-card-button">
               Need a Fix
-              <span className="button-arrow">→</span>
+              <span className="BusinessServices-button-arrow">→</span>
             </button>
           </div>
-          <div className="card-bg-shape"></div>
+          <div className="BusinessServices-card-bg-shape"></div>
         </div>
       </div>
 
       {/* Discussion CTA */}
-      <div className="discussion-cta" data-animation="fade-in-on-scroll">
-        <div className="cta-content">
-          <h2 className="cta-title">
+      <div className="BusinessServices-discussion-cta" data-animation="BusinessServices-fade-in-on-scroll">
+        <div className="BusinessServices-cta-content">
+          <h2 className="BusinessServices-cta-title">
             Got An Idea Or Concerns?<br />
             Let's Discuss.
           </h2>
-          <button className="cta-button">
+          <button className="BusinessServices-cta-button">
             Explore More
-            <span className="button-arrow">→</span>
+            <span className="BusinessServices-button-arrow">→</span>
           </button>
         </div>
-        <div className="cta-bg-pattern"></div>
+        <div className="BusinessServices-cta-bg-pattern"></div>
       </div>
 
       {/* Enhanced Partner Success Stories Section */}
       <div 
         ref={partnerSectionRef} 
-        className="partner-success-section"
-        data-animation="fade-in-on-scroll"
+        className="BusinessServices-partner-success-section"
+        data-animation="BusinessServices-fade-in-on-scroll"
       >
-        <div className="section-header">
+        <div className="BusinessServices-section-header">
           <div>
-            <h2 className="section-title">
-              Partner's <span className="highlight">Success Stories</span>
+            <h2 className="BusinessServices-section-title">
+              Partner's <span className="BusinessServices-highlight">Success Stories</span>
             </h2>
           </div>
           
-          <div className="navigation-controls">
+          <div className="BusinessServices-navigation-controls">
             <button 
-              className={`nav-button ${currentTestimonial === 0 ? 'disabled' : ''}`}
+              className={`BusinessServices-nav-button ${currentTestimonial === 0 ? 'BusinessServices-disabled' : ''}`}
               onClick={prevTestimonial}
               disabled={isTransitioning}
               aria-label="Previous testimonial"
@@ -298,7 +289,7 @@ const BusinessServices = () => {
               ‹
             </button>
             <button 
-              className={`nav-button ${currentTestimonial === testimonials.length - 1 ? 'disabled' : ''}`}
+              className={`BusinessServices-nav-button ${currentTestimonial === testimonials.length - 1 ? 'BusinessServices-disabled' : ''}`}
               onClick={nextTestimonial}
               disabled={isTransitioning}
               aria-label="Next testimonial"
@@ -309,25 +300,25 @@ const BusinessServices = () => {
         </div>
 
         {/* Testimonial Carousel */}
-        <div className="testimonial-carousel">
+        <div className="BusinessServices-testimonial-carousel">
           <div 
             ref={testimonialTrackRef}
-            className="testimonial-track"
+            className="BusinessServices-testimonial-track"
           >
             {testimonials.map((testimonial, index) => (
               <div 
                 key={testimonial.id} 
-                className="testimonial-slide"
+                className="BusinessServices-testimonial-slide"
               >
-                <div className="testimonial-image">
+                <div className="BusinessServices-testimonial-image">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="testimonial-avatar"
+                    className="BusinessServices-testimonial-avatar"
                     loading="lazy"
                   />
                   <button 
-                    className="play-button"
+                    className="BusinessServices-play-button"
                     onClick={() => handlePlayVideo(testimonial)}
                     aria-label={`Play video testimonial for ${testimonial.name}`}
                   >
@@ -335,17 +326,17 @@ const BusinessServices = () => {
                   </button>
                 </div>
 
-                <div className="testimonial-content">
-                  <div className="company-logo">
+                <div className="BusinessServices-testimonial-content">
+                  <div className="BusinessServices-company-logo">
                     {testimonial.company}
                   </div>
-                  <h3 className="testimonial-name">
-                    {testimonial.name.split(' ')[0]} <span className="highlight">{testimonial.name.split(' ')[1]}</span>
+                  <h3 className="BusinessServices-testimonial-name">
+                    {testimonial.name.split(' ')[0]} <span className="BusinessServices-highlight">{testimonial.name.split(' ')[1]}</span>
                   </h3>
-                  <p className="testimonial-position">{testimonial.position}</p>
-                  <p className="testimonial-text">{testimonial.testimonial}</p>
+                  <p className="BusinessServices-testimonial-position">{testimonial.position}</p>
+                  <p className="BusinessServices-testimonial-text">{testimonial.testimonial}</p>
                   <button 
-                    className="case-study-link"
+                    className="BusinessServices-case-study-link"
                     onClick={() => handleCaseStudy(testimonial.caseStudyUrl)}
                   >
                     View Case Study
@@ -356,27 +347,16 @@ const BusinessServices = () => {
           </div>
         </div>
 
-        {/* Testimonial Indicators */}
-        <div className="testimonial-indicators">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              className={`indicator ${index === currentTestimonial ? 'active' : ''}`}
-              onClick={() => goToTestimonial(index)}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
-        </div>
+        
       </div>
 
       {/* Partner Logos Section - Outside Container */}
-      <div className="partner-logos-section">
-       
-        <div className="partner-logos">
+      <div className="BusinessServices-partner-logos-section" data-animation="BusinessServices-fade-in-on-scroll">
+        <div className="BusinessServices-partner-logos">
           {partners.map((partner, index) => (
             <div 
               key={index} 
-              className="partner-logo"
+              className="BusinessServices-partner-logo"
             >
               <img 
                 src={partner.logo} 

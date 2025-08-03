@@ -6,6 +6,8 @@ import Footer from './Component/Footer';
 import BusinessServices from './Component/BusinessServices';
 import ExpertiseSections from './Component/ExpertiseSections';
 import TechHiringComponent from './Component/TechHiring';
+import EngagementModels from './Component/EngagementModels';
+import ServicesComponent from './Component/ServicesComponent';
 
 const Homepage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,6 +23,31 @@ const Homepage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.header')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMenuOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   const navItems = [
     { name: 'What We Do', hasDropdown: true },
     { name: 'Who We Serve', hasDropdown: true },
@@ -29,6 +56,10 @@ const Homepage = () => {
     { name: 'Company', hasDropdown: true },
     { name: 'Careers', hasDropdown: false },
   ];
+
+  const handleMobileNavClick = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <div className="homepage">
@@ -65,6 +96,7 @@ const Homepage = () => {
           <button 
             className="mobile-menu-btn"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -72,12 +104,24 @@ const Homepage = () => {
 
         {/* Mobile Menu */}
         <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
-          {navItems.map((item, index) => (
-            <button key={index} className="mobile-nav-link">
-              {item.name}
+          <div className="mobile-menu-content">
+            {navItems.map((item, index) => (
+              <button 
+                key={index} 
+                className="mobile-nav-link"
+                onClick={handleMobileNavClick}
+              >
+                {item.name}
+                {item.hasDropdown && <ChevronDown size={16} />}
+              </button>
+            ))}
+            <button 
+              className="mobile-contact-btn"
+              onClick={handleMobileNavClick}
+            >
+              Contact Us
             </button>
-          ))}
-          <button className="mobile-contact-btn">Contact Us</button>
+          </div>
         </div>
       </header>
 
@@ -124,8 +168,9 @@ const Homepage = () => {
       </section>
 
       <CompanyLogos/>
-      
+      <ServicesComponent/>
       <BusinessServices/>
+      <EngagementModels/>
       <ExpertiseSections/>
       <TechHiringComponent/>
       <Footer/>

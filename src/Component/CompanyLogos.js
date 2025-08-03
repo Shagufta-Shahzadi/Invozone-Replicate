@@ -6,7 +6,7 @@ import columnLogo from '../Assests/Untitled_design__11_-removebg-preview.png'; /
 const CompanyLogos = () => {
   const containerRef = useRef(null);
   const statsRef = useRef(null);
-  const infoRef = useRef(null);
+  const logosRef = useRef(null);
 
   // Company data with working online logo URLs
   const companies = [
@@ -70,7 +70,7 @@ const CompanyLogos = () => {
 
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.1,
+      threshold: 0.2,
       rootMargin: '0px 0px -50px 0px'
     };
 
@@ -78,13 +78,33 @@ const CompanyLogos = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
+          
+          // If it's the logos container, animate each logo individually
+          if (entry.target === logosRef.current) {
+            const logoItems = entry.target.querySelectorAll('.logo-item');
+            logoItems.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add('animate-in');
+              }, index * 100); // Stagger animation by 100ms for each logo
+            });
+          }
+        } else {
+          // Remove animation class when out of view to re-trigger on scroll back
+          entry.target.classList.remove('animate-in');
+          
+          if (entry.target === logosRef.current) {
+            const logoItems = entry.target.querySelectorAll('.logo-item');
+            logoItems.forEach((item) => {
+              item.classList.remove('animate-in');
+            });
+          }
         }
       });
     }, observerOptions);
 
-    // Observe elements (only stats and info, not logos)
+    // Observe elements
     if (statsRef.current) observer.observe(statsRef.current);
-    if (infoRef.current) observer.observe(infoRef.current);
+    if (logosRef.current) observer.observe(logosRef.current);
 
     return () => {
       observer.disconnect();
@@ -103,7 +123,7 @@ const CompanyLogos = () => {
       </div>
 
       {/* Company Logos Grid */}
-      <div className="logos-grid">
+      <div className="logos-grid" ref={logosRef}>
         {companies.map((company, index) => (
           <div key={index} className="logo-item">
             {/* Logo Image */}

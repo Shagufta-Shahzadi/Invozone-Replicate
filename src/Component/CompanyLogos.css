@@ -3,72 +3,158 @@
   width: 100%;
   max-width: 1152px; /* max-w-6xl */
   margin: 0 auto;
-  padding: 3rem 1.5rem; /* py-12 px-6 */
+  padding: 3rem 1rem; /* Reduced horizontal padding for mobile */
   background-color: white;
-   margin-top: 100px;
+  margin-top: 100px;
+}
+
+/* Mobile first approach */
+@media (max-width: 480px) {
+  .company-logos-container {
+    padding: 2rem 0.75rem;
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .company-logos-container {
+    padding: 3rem 1.5rem;
+  }
 }
 
 .stats-header {
   text-align: center;
-  margin-bottom: 3rem; /* mb-12 */
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stats-header.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .stats-header {
+    margin-bottom: 2rem;
+  }
 }
 
 .stats-title {
-  font-size: 1.2rem; /* text-3xl */
-  font-weight: 600; /* font-light */
-  color: #374151; /* text-gray-700 */
-  line-height: 1.625; /* leading-relaxed */
+  font-size: 1.125rem; /* Smaller base size for mobile */
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.6;
+  padding: 0 1rem;
 }
 
-@media (max-width: 768px) {
+/* Progressive enhancement for larger screens */
+@media (min-width: 480px) {
   .stats-title {
-    font-size: 1.5rem; /* text-2xl on mobile */
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .stats-title {
+    font-size: 1.5rem;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-title {
+    font-size: 1.875rem;
   }
 }
 
 .stats-number {
-  color: #3b82f6; /* text-blue-500 */
-  font-weight: 600; /* font-semibold */
+  color: #3b82f6;
+  font-weight: 700;
+  display: inline-block;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.stats-header.animate-in .stats-number {
+  animation: pulse-scale 0.6s ease-out 0.5s;
 }
 
 .logos-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* grid-cols-5 */
-  gap: 1rem; /* gap-4 */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+  gap: 1.5rem;
   align-items: center;
   justify-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logos-grid.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive grid columns */
+@media (min-width: 480px) {
+  .logos-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on small tablets */
+    gap: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
   .logos-grid {
-    gap: 2rem; /* md:gap-8 */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on tablets */
+    gap: 2rem;
   }
-} 
+}
+
+@media (min-width: 1024px) {
+  .logos-grid {
+    grid-template-columns: repeat(5, 1fr); /* 5 columns on desktop */
+    gap: 2.5rem;
+  }
+}
+
 .logo-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: default;
+  opacity: 0;
+  transform: translateY(30px) scale(0.8);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-item.animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .logo-item:hover {
-  transform: scale(1.05) translateY(-2px);
-  transition: all 0.3s ease;
+  transform: translateY(0) scale(1.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-container {
-  width: 200px;
-  height: 300px;
+  width: 60px; /* Smaller base size for mobile */
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
   background-color: transparent;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Responsive logo container sizes */
 @media (min-width: 480px) {
   .logo-container {
     width: 70px;
@@ -91,126 +177,64 @@
 }
 
 .logo-image {
-  max-width: 200%;
-  max-height: 280%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   transition: all 0.3s ease;
+  filter: grayscale(0.3);
 }
 
-/* Special styling for imported Column logo */
+.logo-item:hover .logo-image {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+/* Special styling for imported Column logo - responsive */
 .column-logo {
-  max-width: 260px ;
-  max-height: 300px ;
-  margin-left: 20px;
+  max-width: 120%;
+  max-height: 120%;
+}
+
+@media (min-width: 480px) {
+  .column-logo {
+    max-width: 140%;
+    max-height: 140%;
+  }
+}
+
+@media (min-width: 768px) {
+  .column-logo {
+    max-width: 160%;
+    max-height: 160%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .column-logo {
+    max-width: 180%;
+    max-height: 180%;
+    margin-left: 10px;
+  }
 }
 
 .logo-fallback {
   display: none;
   width: 100%;
   height: 100%;
-  background-color: #e5e7eb;
+  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
   border-radius: 0.5rem;
   align-items: center;
   justify-content: center;
   color: #4b5563;
   font-size: 1rem;
   font-weight: bold;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {
   .logo-fallback {
     font-size: 1.25rem;
   }
-}
-
-.info-section {
-  margin-top: 3rem;
-  padding: 1.5rem;
-  background-color: #f9fafb;
-  border-radius: 0.5rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out 0.4s;
-}
-
-@media (min-width: 768px) {
-  .info-section {
-    margin-top: 4rem;
-    padding: 2rem;
-  }
-}
-
-.info-section.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.info-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 1rem;
-}
-
-@media (min-width: 768px) {
-  .info-title {
-    font-size: 1.125rem;
-  }
-}
-
-.info-content {
-  font-size: 0.8rem;
-  color: #4b5563;
-}
-
-@media (min-width: 768px) {
-  .info-content {
-    font-size: 0.875rem;
-  }
-}
-
-.info-content p {
-  margin-bottom: 0.5rem;
-}
-
-.info-content ul {
-  margin-left: 1rem;
-  margin-bottom: 0.5rem;
-  padding-left: 0;
-}
-
-.info-content li {
-  margin-bottom: 0.25rem;
-  list-style: none;
-}
-
-.info-content code {
-  display: block;
-  background-color: #e5e7eb;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.7rem;
-  font-family: monospace;
-  margin: 0.5rem 0;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-@media (min-width: 768px) {
-  .info-content code {
-    font-size: 0.75rem;
-    word-break: normal;
-  }
-}
-
-.info-content strong {
-  font-weight: 600;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Loading animation keyframes */
@@ -236,10 +260,48 @@ html {
   }
 }
 
-/* Responsive typography adjustments */
+@keyframes pulse-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Extra small devices optimization */
 @media (max-width: 320px) {
+  .company-logos-container {
+    padding: 1.5rem 0.5rem;
+    margin-top: 40px;
+  }
+  
   .stats-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .logos-grid {
+    gap: 1rem;
   }
   
   .logo-container {
@@ -247,7 +309,75 @@ html {
     height: 50px;
   }
   
-  .info-content {
-    font-size: 0.75rem;
+  .logo-fallback {
+    font-size: 0.875rem;
+  }
+}
+
+/* Large screens optimization */
+@media (min-width: 1280px) {
+  .company-logos-container {
+    padding: 4rem 2rem;
+      margin-top: 20px;
+  }
+  
+  .stats-title {
+    font-size: 1.5rem;
+  
+  }
+  
+  .logos-grid {
+    gap: 3rem;
+  }
+  
+  .logo-container {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .logo-item,
+  .stats-header,
+  .logos-grid,
+  .logo-image,
+  .stats-number {
+    transition: none;
+    animation: none;
+  }
+  
+  .logo-item.animate-in,
+  .stats-header.animate-in,
+  .logos-grid.animate-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Focus states for accessibility */
+.logo-item:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* Print styles */
+@media print {
+  .company-logos-container {
+    margin-top: 0;
+    padding: 1rem;
+  }
+  
+  .logo-item:hover {
+    transform: none;
   }
 }

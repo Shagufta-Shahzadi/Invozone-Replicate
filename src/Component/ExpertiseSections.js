@@ -7,8 +7,10 @@ const ExpertiseSections = () => {
   const [currentSetIndex, setCurrentSetIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const containerRef = useRef(null);
   const intervalRef = useRef(null);
+  const observerRef = useRef(null);
 
   // Debug: Log current data to console
   useEffect(() => {
@@ -22,7 +24,7 @@ const ExpertiseSections = () => {
 
   // Auto-slide every 5 seconds
   useEffect(() => {
-    if (!isPaused) {
+    if (!isPaused && isVisible) {
       intervalRef.current = setInterval(() => {
         setCurrentSetIndex((prev) => {
           const nextIndex = (prev + 1) % dataSets.length;
@@ -37,32 +39,52 @@ const ExpertiseSections = () => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isPaused]);
+  }, [isPaused, isVisible]);
 
-  // Intersection Observer for visibility
+  // Enhanced Intersection Observer for scroll animation
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const options = {
+      threshold: [0.1, 0.2, 0.3],
+      rootMargin: '-20px 0px -20px 0px'
+    };
+
+    observerRef.current = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-        console.log('Container visible:', entry.isIntersecting);
+        const isIntersecting = entry.isIntersecting;
+        const intersectionRatio = entry.intersectionRatio;
+        
+        console.log('Container visible:', isIntersecting, 'Ratio:', intersectionRatio);
+        
+        setIsVisible(isIntersecting);
+        
+        // Trigger animation when component becomes visible
+        if (isIntersecting && intersectionRatio >= 0.2 && !hasAnimated) {
+          setHasAnimated(true);
+          console.log('Animation triggered');
+        }
+        
+        // Reset animation when component goes out of view completely
+        if (!isIntersecting && intersectionRatio === 0) {
+          setTimeout(() => {
+            setHasAnimated(false);
+            console.log('Animation reset for re-trigger');
+          }, 200);
+        }
       },
-      {
-        threshold: 0.2,
-        rootMargin: '-50px 0px'
-      }
+      options
     );
 
     const currentContainer = containerRef.current;
     if (currentContainer) {
-      observer.observe(currentContainer);
+      observerRef.current.observe(currentContainer);
     }
 
     return () => {
-      if (currentContainer) {
-        observer.unobserve(currentContainer);
+      if (observerRef.current && currentContainer) {
+        observerRef.current.unobserve(currentContainer);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
   const handleMouseEnter = (sectionId) => {
     setHoveredSection(sectionId);
@@ -101,9 +123,38 @@ const ExpertiseSections = () => {
     // Example: navigate to detailed page or open modal
   };
 
+  // Touch handlers for mobile swipe support
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNavigation('next');
+    } else if (isRightSwipe) {
+      handleNavigation('prev');
+    }
+  };
+
   return (
     <div 
-      className={`expertise-container ${isVisible ? 'animate-in' : ''}`} 
+      className={`expertise-container ${hasAnimated ? 'animate-in' : ''} ${isVisible ? 'visible' : ''}`} 
       ref={containerRef}
     >
       <div className="expertise-header">
@@ -127,7 +178,12 @@ const ExpertiseSections = () => {
       </div>
 
       <div className="expertise-sections-wrapper">
-        <div className="expertise-sections">
+        <div 
+          className="expertise-sections"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {dataSets.map((set, setIndex) => (
             <div 
               key={setIndex} 
@@ -150,20 +206,28 @@ const ExpertiseSections = () => {
                     onMouseEnter={() => handleMouseEnter(key)}
                     onMouseLeave={handleMouseLeave}
                     style={{
-                      backgroundImage: isHovered ? `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${section.bgImage})` : 'none'
+                      backgroundImage: isHovered ? `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${section.bgImage})` : 'none',
+                      animationDelay: `${index * 0.1}s`
                     }}
                   >
                     <div className="section-content">
                       <h3 className="section-title">{section.title}</h3>
                       <ul className="section-items">
                         {section.items.map((item, itemIndex) => (
-                          <li key={itemIndex} className="section-item">{item}</li>
+                          <li 
+                            key={itemIndex} 
+                            className="section-item"
+                            style={{ animationDelay: `${(index * 0.1) + (itemIndex * 0.05)}s` }}
+                          >
+                            {item}
+                          </li>
                         ))}
                       </ul>
                       <button 
                         className="explore-btn"
                         onClick={() => handleExploreClick(key)}
                         aria-label={`Explore ${section.title}`}
+                        style={{ animationDelay: `${(index * 0.1) + 0.3}s` }}
                       >
                         Explore More
                         <span className="arrow-icon">→</span>
@@ -177,7 +241,21 @@ const ExpertiseSections = () => {
         </div>
       </div>
 
-    
+      {/* Progress indicators for mobile */}
+      <div className="progress-indicators">
+        {dataSets.map((_, index) => (
+          <button
+            key={index}
+            className={`progress-dot ${index === currentSetIndex ? 'active' : ''}`}
+            onClick={() => {
+              setCurrentSetIndex(index);
+              setIsPaused(true);
+              setTimeout(() => setIsPaused(false), 3000);
+            }}
+            aria-label={`Go to section ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };
