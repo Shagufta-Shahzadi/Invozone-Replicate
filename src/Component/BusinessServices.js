@@ -11,49 +11,60 @@ const BusinessServices = () => {
 
   // Partner testimonials data
   const testimonials = [
-    {
-      id: 1,
-      name: "Oliver Wolff",
-      company: "Kindle",
-      position: "Kindle Product Manager",
-      image: "https://invozone-backend.s3.us-east-1.amazonaws.com/Rectangle_19829_81dcf601de.webp",
-      testimonial: "We partnered with InnoScope to enhance our Elixir SDK, and the process was seamless. Consistent communication and timely status updates, even with minor estimate shifts, allowed us to adjust efficiently.",
-      caseStudyUrl: "#case-study-kindle"
-    },
-    {
-      id: 2,
-      name: "Ryan Carter",
-      company: "TechFlow",
-      position: "CEO - TechFlow Inc.",
-      image: "https://invozone-backend.s3.us-east-1.amazonaws.com/Rectangle_19829_6b12274dee.png",
-      testimonial: "Their proactive approach kept us informed, and the code quality exceeded our expectations, reducing extensive testing. InnoScope's clear communication made them a standout partner, ensuring smooth collaboration throughout the project.",
-      caseStudyUrl: "#case-study-techflow"
-    },
-    {
-      id: 3,
-      name: "Sarah Johnson",
-      company: "DataVision",
-      position: "CTO - DataVision Corp",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=380&h=350&fit=crop&crop=face",
-      testimonial: "InnoScope delivered exceptional results with seamless integration and outstanding support. Their technical expertise and collaborative approach ensured smooth project execution throughout.",
-      caseStudyUrl: "#case-study-datavision"
-    },
-    {
-      id: 4,
-      name: "Michael Chen",
-      company: "CloudSync",
-      position: "Technical Director",
-      image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=380&h=350&fit=crop&crop=face",
-      testimonial: "Working with InnoScope transformed our development process. Their expertise in cloud architecture and dedication to quality helped us scale efficiently while maintaining code excellence.",
-      caseStudyUrl: "#case-study-cloudsync"
-    }
-  ];
+  {
+    id: 1,
+    name: "Oliver Wolff",
+    company: "Kinde",
+    logo: "https://images.seeklogo.com/logo-png/35/1/clutch-logo-png_seeklogo-352148.png",
+    position: "Kindle Product Manager",
+    image: "https://invozone-backend.s3.us-east-1.amazonaws.com/Rectangle_19829_81dcf601de.webp",
+    testimonial: "We partnered with InvoZone to enhance our Elixir SDK, and the process was seamless. Consistent communication and timely status updates, even with minor estimate shifts, allowed us to adapt efficiently. Their proactive approach kept us informed, and the code quality exceeded our expectations, reducing extensive testing. Overall, InvoZone's clear communication and high-quality delivery made them a standout partner, ensuring smooth collaboration throughout the project.",
+    caseStudyUrl: "#case-study-kinde"
+  },
+  {
+    id: 2,
+    name: "Ron Zabel",
+    company: "Crytool.io",
+    
+    position: "CEO - Crytool.io",
+    image: "https://invozone-backend.s3.us-east-1.amazonaws.com/Rectangle_19829_1_77a08bad66.png", // (replace with actual image if you have it)
+    testimonial: "InvoZone has been a game-changer for us, bringing fresh ideas and genuine support to our projects. This was not the first time we outsourced, but for sure the smoothest experience we had.",
+    caseStudyUrl: "#case-study-crytool"
+  },
+  {
+    id: 3,
+    name: "Ryan Carter",
+    company: "Shield Republic",
+    position: "Co-Founder - Shield Republic",
+    image: "https://invozone-backend.s3.us-east-1.amazonaws.com/ryan_98b623518c.webp",
+    testimonial: "We were initially hesitant to outsource overseas, especially after our previous experience with another company that provided average services. Since partnering with InvoZone, we’ve seen no decline in quality. The team is responsive, easy to work with, and possesses comprehensive knowledge of web app development and API integrations.",
+    caseStudyUrl: "#case-study-shieldrepublic"
+  },
+  {
+    id: 4,
+    name: "David Smith",
+    company: "Easyfill.ai",
+    position: "CEO & Co-Founder - Easyfill",
+    image: "https://invozone-backend.s3.us-east-1.amazonaws.com/Rectangle_19829_81dcf601de.webp", // (replace with actual image if you have it)
+    testimonial: "InvoZone has been a game-changer for us, offering fresh ideas and genuine support. This wasn’t our first outsourcing experience, but it has definitely been the smoothest.",
+    caseStudyUrl: "#case-study-easyfill"
+  },
+  {
+    id: 5,
+    name: "Chris Dominguez",
+    company: "StorageChain",
+    position: "CEO - StorageChain",
+    image: "https://invozone-backend.s3.us-east-1.amazonaws.com/Chris_Dominguez_8fb4bfa290.webp", // (replace with actual image if you have it)
+    testimonial: "Every member of the InvoZone team has been diligent and focused, fostering a genuine partnership on the technology front.",
+    caseStudyUrl: "#case-study-storagechain"
+  }
+];
 
   const partners = [
     { 
       name: "Clutch", 
-      logo: "https://cdn.worldvectorlogo.com/logos/clutch-2.svg",
-      color: "#FF6D2D"
+      logo: "https://images.seeklogo.com/logo-png/35/1/clutch-logo-png_seeklogo-352148.png",
+      color: "#00C4CC"
     },
     { 
       name: "DesignRush", 

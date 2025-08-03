@@ -82,11 +82,11 @@ export const technologiesData = {
     },
     {
       name: 'Rust',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg'
+      logo: 'https://logos-world.net/wp-content/uploads/2021/02/Rust-Logo.png'
     },
     {
-      name: 'Nest-js',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg'
+      name: 'Next-js',
+      logo: 'https://www.svgrepo.com/show/354113/nextjs-icon.svg'
     },
     {
       name: '.Net Core',
@@ -96,49 +96,49 @@ export const technologiesData = {
   'Low/No Code': [
     {
       name: 'Shopify',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shopify/shopify-original.svg'
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ58f__Hs5QwGWIEcsawDwW1o5IQzaYNPONhQ&s'
     },
     {
       name: 'Wordpress',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg'
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiQqvP9mSAN_KNxZlbvD9VT-yl4Vf_PuT6Cw&s'
     },
     {
       name: 'Strapi',
-      logo: 'https://strapi.io/assets/strapi-logo-light.svg'
+      logo: 'https://images.seeklogo.com/logo-png/47/1/strapi-icon-logo-png_seeklogo-477947.png'
     },
     {
       name: 'bubble.io',
-      logo: 'https://bubble.io/img/bubble-logo-v3.png'
+      logo: 'https://community.wappler.io/uploads/default/optimized/3X/b/9/b914e7167dd20f4c69d5eb188091b152bfa8d281_2_464x500.png'
     },
     {
       name: 'builder.io',
-      logo: 'https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F52dcecf6ad0446c48d19b9e7d8cbdaa4'
+      logo: 'https://media.licdn.com/dms/image/v2/C560BAQHWJ5ITY4w6ow/company-logo_200_200/company-logo_200_200/0/1656005049391/builder_io_logo?e=2147483647&v=beta&t=ZBBGSEV4z3TzRU0vK-tMz4ss3ubwh3ZiJ3HH6l6arE8'
     },
     {
       name: 'Zoho',
-      logo: 'https://www.zoho.com/sites/default/files/zoho_general_pages/zoho-logo.svg'
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Zoho-logo.png'
     },
     {
       name: 'Zapier',
-      logo: 'https://cdn.zapier.com/storage/photos/9ec65c79de8ae54080c1b417540469a6.png'
+      logo: 'https://images.icon-icons.com/2407/PNG/512/zapier_icon_146029.png'
     },
     {
       name: 'Webflow',
-      logo: 'https://uploads-ssl.webflow.com/5d3e2edeac4e6b45e4e5d7e0/5d3e2edeac4e6b1b6ae5d7fb_webflow-mark-white.svg'
+      logo: 'https://images.icon-icons.com/2699/PNG/512/webflow_logo_icon_169218.png'
     },
     {
       name: 'Wix',
-      logo: 'https://static.wixstatic.com/media/9ab0d1_f40b7bb8fd5a4e279cd91f1ac83b8a9b~mv2.png/v1/fit/w_2500,h_1330,al_c/9ab0d1_f40b7bb8fd5a4e279cd91f1ac83b8a9b~mv2.png'
+      logo: 'https://cdn2.lnk.bi/profilepics/-1513812_20230113648.png'
     },
     {
       name: "Wizard's Toolkit",
-      logo: 'https://imagemagick.org/image/wizard.png'
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeEbtiCZaSLxbrYryA0ENpbnRGLBts-O97TQ&s'
     }
   ],
   'Database': [
     {
       name: 'Firebase',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg'
+      logo: 'https://images.seeklogo.com/logo-png/61/1/firebase-icon-logo-png_seeklogo-615938.png'
     },
     {
       name: 'Mongodb',
@@ -170,7 +170,7 @@ export const technologiesData = {
     },
     {
       name: 'Oracle',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg'
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIP5KTNtwE18A_XpYzFj5Usn-x2j0ZsyED2A&s'
     },
     {
       name: 'Mysql',
@@ -184,7 +184,7 @@ export const technologiesData = {
   'DevOps': [
     {
       name: 'Aws',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg'
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDRxvq75acmFPbHS8fUA72GWURt2ctFcdnAQ&s'
     },
     {
       name: 'Gcp',
@@ -196,7 +196,7 @@ export const technologiesData = {
     },
     {
       name: 'Ibm-cloud',
-      logo: 'https://www.ibm.com/cloud/images/cloud-logo.svg'
+      logo: 'https://avatars.githubusercontent.com/u/7284885?s=280&v=4'
     },
     {
       name: 'Digital-ocean',
@@ -208,7 +208,7 @@ export const technologiesData = {
     },
     {
       name: 'Puppet',
-      logo: 'https://www.puppet.com/sites/default/files/2021-10/puppet-logo-amber-black.svg'
+      logo: 'https://www.svgrepo.com/show/354230/puppet-icon.svg'
     },
     {
       name: 'Kubernetes',
@@ -266,7 +266,7 @@ export const technologiesData = {
     },
     {
       name: 'Pwa',
-      logo: 'https://developers.google.com/web/progressive-web-apps/images/pwa-badge.svg'
+      logo: 'https://ps.w.org/iflair-pwa-app/assets/icon-256x256.png?rev=3076417'
     }
   ],
   'AI & ML': [
@@ -304,11 +304,11 @@ export const technologiesData = {
     },
     {
       name: 'Matplotlib',
-      logo: 'https://matplotlib.org/_static/logo2_compressed.svg'
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKt9fsfQ8qST4DCnH9EpXIc2f1pEcaZutung&s'
     },
     {
       name: 'Pandas',
-      logo: 'https://pandas.pydata.org/static/img/pandas_white.svg'
+      logo: 'https://img.icons8.com/color/512/pandas.png'
     },
     {
       name: 'Opencv',
@@ -324,19 +324,19 @@ export const technologiesData = {
     },
     {
       name: 'Mistral',
-      logo: 'https://mistral.ai/images/logo_hubc88c4ece131150842cbbd67e4a8b9a1_4929_44x0_resize_box_3.png'
+      logo: 'https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/mistral-color.png'
     },
     {
       name: 'DeepSeek',
-      logo: 'https://www.deepseek.com/static/images/logo.svg'
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzmI5Mu17eYza3En86gyZPQNwzRCCeBZ56TA&s'
     },
     {
       name: 'llamas',
-      logo: 'https://ai.meta.com/static/images/meta-ai-logo.svg'
+      logo: 'https://cdn.prod.website-files.com/625447c67b621ab49bb7e3e5/6806764ddd6f4edff35d5a52_llama-4-icon.jpg'
     },
     {
       name: 'Langflow',
-      logo: 'https://github.com/logspace-ai/langflow/raw/main/docs/static/img/langflow-logo.png'
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyf5lIFwfcxlpgy-4y6Y1clfgtUapHEjb192nifmRrHIKJfP4IBVK9BxcwGCVHsgpEnfs&usqp=CAU'
     }
   ]
 };
