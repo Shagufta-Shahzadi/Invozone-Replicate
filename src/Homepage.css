@@ -56,7 +56,7 @@ body {
 }
 
 .logo-image {
-  height: 200px;
+  height: 50px;
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -183,7 +183,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: 320px;
+  width: 200px;
   height: 100vh;
   background: #ffffff;
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
@@ -553,7 +553,7 @@ body {
   }
   
   .logo-image {
-    height: 90px;
+    height: 45px;
   }
   
   .mobile-menu {
@@ -594,8 +594,8 @@ body {
   .btn-primary,
   .btn-secondary {
     width: 100%;
-    max-width: 200px;
-    padding: 0.85rem 1rem;
+    max-width: 280px;
+    padding: 0.85rem 2rem;
     font-size: 14px;
   }
   
@@ -625,11 +625,11 @@ body {
   }
   
   .logo-image {
-    height: 32px;
+    height: 40px;
   }
   
   .mobile-menu {
-    width: 260px;
+    width: 200px;
   }
   
   .mobile-menu-content {
