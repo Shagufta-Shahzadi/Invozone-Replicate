@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 import './Homepage.css';
+import logo from '../src/Assests/company Logo.png'; // Add your logo import path here
 import CompanyLogos from './Component/CompanyLogos';
 import Footer from './Component/Footer';
 import BusinessServices from './Component/BusinessServices';
@@ -72,10 +73,7 @@ const Homepage = () => {
       <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
         <div className="header-container">
           <div className="logo">
-            <div className="logo-icon">
-              <span>IZ</span>
-            </div>
-            <span className="logo-text">invozone</span>
+            <img src={logo} alt="Invozone" className="logo-image" />
           </div>
 
           {/* Desktop Navigation */}
@@ -106,6 +104,12 @@ const Homepage = () => {
         </div>
 
         {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div 
+            className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
         <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
           <div className="mobile-menu-content">
             <nav className="mobile-nav">

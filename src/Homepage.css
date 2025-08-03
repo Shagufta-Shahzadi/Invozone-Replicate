@@ -50,39 +50,19 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
   text-decoration: none;
   color: inherit;
   z-index: 1001;
 }
 
-.logo-icon {
-  width: 35px;
-  height: 35px;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 16px;
+.logo-image {
+  height: 40px;
+  width: auto;
   transition: transform 0.3s ease;
 }
 
-.logo-icon:hover {
-  transform: rotate(5deg) scale(1.05);
-}
-
-.logo-text {
-  font-size: 24px;
-  font-weight: 700;
-  color: white;
-  transition: color 0.3s ease;
-}
-
-.header-scrolled .logo-text {
-  color: #1f2937;
+.logo-image:hover {
+  transform: scale(1.05);
 }
 
 /* Desktop Navigation */
@@ -192,6 +172,7 @@ body {
   transition: color 0.3s ease;
   z-index: 1002;
   padding: 4px;
+  margin-right: 0.5rem;
 }
 
 .header-scrolled .mobile-menu-btn {
@@ -201,16 +182,17 @@ body {
 .mobile-menu {
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
+  width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
   transform: translateX(100%);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
   z-index: 1001;
+  overflow-y: auto;
 }
 
 .mobile-menu-open {
@@ -220,13 +202,11 @@ body {
 }
 
 .mobile-menu-content {
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   height: 100%;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-top: 90px;
+  padding-top: 100px;
 }
 
 .mobile-nav {
@@ -241,22 +221,26 @@ body {
   text-align: left;
   background: none;
   border: none;
-  color: #374151;
+  color: #1f2937;
   font-family: inherit;
   cursor: pointer;
   padding: 1.25rem 0;
   font-weight: 500;
   font-size: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  transition: color 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
 .mobile-nav-link:hover {
   color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+  padding-left: 0.5rem;
 }
 
 .mobile-menu-cta {
   margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .mobile-contact-btn {
@@ -269,11 +253,33 @@ body {
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
 }
 
 .mobile-contact-btn:hover {
   background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Hero Section */
@@ -539,21 +545,23 @@ body {
   .header-container {
     height: 60px;
     padding: 0 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
   }
   
-  .logo-text {
-    font-size: 20px;
+  .logo-image {
+    height: 35px;
   }
   
-  .logo-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 14px;
+  .mobile-menu {
+    width: 280px;
   }
   
   .mobile-menu-content {
     padding-top: 80px;
-    margin-right: 20px;
   }
   
   .hero-content {
@@ -585,8 +593,8 @@ body {
   
   .btn-primary,
   .btn-secondary {
-    width: 80%;
-    max-width: 200px;
+    width: 100%;
+    max-width: 280px;
     padding: 0.85rem 2rem;
     font-size: 14px;
   }
@@ -609,16 +617,19 @@ body {
   .header-container {
     height: 55px;
     padding: 0 0.75rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
   }
   
-  .logo-text {
-    font-size: 18px;
+  .logo-image {
+    height: 32px;
   }
   
-  .logo-icon {
-    width: 28px;
-    height: 28px;
-    font-size: 12px;
+  .mobile-menu {
+    width: 260px;
   }
   
   .mobile-menu-content {
