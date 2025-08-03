@@ -61,6 +61,11 @@ const Homepage = () => {
     setIsMenuOpen(false);
   };
 
+  const toggleMobileMenu = (e) => {
+    e.stopPropagation();
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="homepage">
       {/* Header */}
@@ -85,17 +90,15 @@ const Homepage = () => {
             ))}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="header-cta">
+          {/* CTA Buttons - Desktop Only */}
+          <div className="header-cta desktop-only">
             <button className="contact-btn">Contact Us</button>
-            <button className="cta-btn">
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button 
             className="mobile-menu-btn"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -105,22 +108,26 @@ const Homepage = () => {
         {/* Mobile Menu */}
         <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
           <div className="mobile-menu-content">
-            {navItems.map((item, index) => (
+            <nav className="mobile-nav">
+              {navItems.map((item, index) => (
+                <button 
+                  key={index} 
+                  className="mobile-nav-link"
+                  onClick={handleMobileNavClick}
+                >
+                  {item.name}
+                  {item.hasDropdown && <ChevronDown size={16} />}
+                </button>
+              ))}
+            </nav>
+            <div className="mobile-menu-cta">
               <button 
-                key={index} 
-                className="mobile-nav-link"
+                className="mobile-contact-btn"
                 onClick={handleMobileNavClick}
               >
-                {item.name}
-                {item.hasDropdown && <ChevronDown size={16} />}
+                Contact Us
               </button>
-            ))}
-            <button 
-              className="mobile-contact-btn"
-              onClick={handleMobileNavClick}
-            >
-              Contact Us
-            </button>
+            </div>
           </div>
         </div>
       </header>
